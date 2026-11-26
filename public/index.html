@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover talented hairstylists and book your next hair appointment with StyleSlot.">
+    <title>StyleSlot | Beauty on Your Terms</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <a href="index.html" class="logo">StyleSlot<span>.</span></a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html" class="active">Home</a>
+            <a href="browse.html">Explore Stylists</a>
+            <a href="#services">Services</a>
+            <a href="#about">About Us</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-outline">Log In</a>
+            <a href="register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">BEAUTY ON YOUR TERMS</span>
+
+                <h1>Your hair.<br>
+                    Your style.<br>
+                    <span>Your time.</span>
+                </h1>
+
+                <p>
+                    Discover talented hairstylists, explore beautiful
+                    hairstyles and book your next appointment — all
+                    in one place.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="browse.html" class="btn btn-primary">
+                        Explore Stylists &rarr;
+                    </a>
+
+                    <a href="#services" class="btn btn-outline">
+                        Discover Styles
+                    </a>
+                </div>
+
+                <div class="hero-note">
+                    Find your style. Find your stylist. Make it yours.
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="images/hero.JPG" alt="Beautifully styled hair">
+
+                <div class="image-label">
+                    <span>CONFIDENCE STARTS HERE</span>
+                    <p>Good hair. Good energy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Banner -->
+        <section class="brand-banner">
+            <span>Discover your style</span>
+            <span class="banner-star">✦</span>
+            <span>Connect with stylists</span>
+            <span class="banner-star">✦</span>
+            <span>Book with ease</span>
+        </section>
+
+        <!-- Hairstyle Categories -->
+        <section class="services section-padding" id="services">
+
+            <div class="section-heading reveal">
+                <span class="eyebrow">EXPLORE THE POSSIBILITIES</span>
+                <h2>Find your next style.</h2>
+                <p>
+                    From protective styles to everyday looks,
+                    there's something for every kind of beauty.
+                </p>
+            </div>
+
+            <div class="carousel-controls">
+                <button id="prev-category" class="carousel-btn"
+                        aria-label="Previous categories">
+                    &larr;
+                </button>
+
+                <button id="next-category" class="carousel-btn"
+                        aria-label="Next categories">
+                    &rarr;
+                </button>
+            </div>
+
+            <div class="category-carousel" id="category-carousel">
+
+                <a href="browse.html?service=braids" class="category-card">
+                    <div class="category-image">
+                        <img src="images/braids.JPG" alt="Braids" loading="lazy">
+                    </div>
+                    <div class="category-info">
+                        <h3>Braids</h3>
+                        <span>&rarr;</span>
+                    </div>
+                </a>
+
+                <a href="browse.html?service=locs" class="category-card">
+                    <div class="category-image">
+                        <img src="images/locs.JPG" alt="Locs" loading="lazy">
+                    </div>
+                    <div class="category-info">
+                        <h3>Locs</h3>
+                        <span>&rarr;</span>
+                    </div>
+                </a>
+
+                <a href="browse.html?service=twists" class="category-card">
+                    <div class="category-image">
+                        <img src="images/twists.JPG" alt="Twists" loading="lazy">
+                    </div>
+                    <div class="category-info">
+                        <h3>Twists</h3>
+                        <span>&rarr;</span>
+                    </div>
+                </a>
+
+                <a href="browse.html?service=wig" class="category-card">
+                    <div class="category-image">
+                        <img src="images/wig_install.JPG" alt="Wig installation" loading="lazy">
+                    </div>
+                    <div class="category-info">
+                        <h3>Wig Installs</h3>
+                        <span>&rarr;</span>
+                    </div>
+                </a>
+
+                <a href="browse.html?service=natural" class="category-card">
+                    <div class="category-image">
+                        <img src="images/natural_hair.JPG" alt="Natural hair" loading="lazy">
+                    </div>
+                    <div class="category-info">
+                        <h3>Natural Hair</h3>
+                        <span>&rarr;</span>
+                    </div>
+                </a>
+
+                <a href="browse.html?service=silk" class="category-card">
+                    <div class="category-image">
+                        <img src="images/silk_press.JPG" alt="Silk press" loading="lazy">
+                    </div>
+                    <div class="category-info">
+                        <h3>Silk Press</h3>
+                        <span>&rarr;</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="how-it-works section-padding">
+
+            <div class="section-heading reveal">
+                <span class="eyebrow">SIMPLE AND SEAMLESS</span>
+                <h2>Good hair in three steps.</h2>
+                <p>Your next appointment doesn't have to be complicated.</p>
+            </div>
+
+            <div class="steps-grid">
+
+                <div class="step-card reveal">
+                    <span class="step-number">01</span>
+                    <h3>Discover</h3>
+                    <p>
+                        Browse hairstylists and explore their services,
+                        prices and customer reviews.
+                    </p>
+                </div>
+
+                <div class="step-card reveal">
+                    <span class="step-number">02</span>
+                    <h3>Book</h3>
+                    <p>
+                        Choose your preferred stylist, service and
+                        available appointment time.
+                    </p>
+                </div>
+
+                <div class="step-card reveal">
+                    <span class="step-number">03</span>
+                    <h3>Glow</h3>
+                    <p>
+                        Show up for your appointment and enjoy
+                        a hairstyle that feels like you.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about section-padding" id="about">
+
+            <div class="about-image reveal">
+                <img src="images/salon.JPG" alt="Hairstylist working in a salon" loading="lazy">
+            </div>
+
+            <div class="about-content reveal">
+                <span class="eyebrow">THE STYLESLOT EXPERIENCE</span>
+
+                <h2>More than just a hair appointment.</h2>
+
+                <p>
+                    We believe finding the right hairstylist should
+                    be simple, convenient and personal.
+                </p>
+
+                <p>
+                    StyleSlot brings clients and hairstylists together
+                    through one platform, making it easier to discover
+                    services, compare prices, check availability and
+                    manage appointments.
+                </p>
+
+                <a href="browse.html" class="btn btn-primary">
+                    Find Your Stylist &rarr;
+                </a>
+            </div>
+
+        </section>
+
+        <!-- Call to Action -->
+        <section class="cta-section reveal">
+            <span class="eyebrow">YOUR NEXT LOOK AWAITS</span>
+            <h2>Ready for your next good hair day?</h2>
+            <p>Discover a stylist who understands your style.</p>
+
+            <a href="browse.html" class="btn btn-primary">
+                Start Exploring &rarr;
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">StyleSlot<span>.</span></a>
+                <p>Beauty on your terms.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="browse.html">Find a Stylist</a>
+                <a href="#services">Services</a>
+                <a href="#about">About Us</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>Your Account</h4>
+                <a href="login.html">Log In</a>
+                <a href="register.html">Sign Up</a>
+                <a href="dashboard.html">Dashboard</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 StyleSlot. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+    <script src="home.js"></script>
+</body>
+</html>
