@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
 const db = require('./db/connection');
 
@@ -10,6 +11,24 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Express session configuration
+if (!process.env.SESSION_SECRET) {
+    throw new Error('SESSION_SECRET is missing from .env');
+}
+
+app.use(session({
+    name: 'styleslot.sid',
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        maxAge: 24 * 60 * 60 * 1000
+    }
+}));
 
 // Serve frontend files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -45,8 +64,19 @@ app.get('/api/health', async (req, res) => {
 });
 
 // API routes
+// API routes
 app.use('/api/services', require('./routes/services'));
 app.use('/api/stylists', require('./routes/stylists'));
+app.use('/api/auth', require('./routes/auth'));
+// Administrator access test
+const { requireAuth, requireAdmin } = require('./middleware/auth');
+
+app.get('/api/admin/test', requireAuth, requireAdmin, (req, res) => {
+    res.json({
+        success: true,
+        message: 'Administrator access granted'
+    });
+});
 
 // Start server
 app.listen(PORT, () => {
