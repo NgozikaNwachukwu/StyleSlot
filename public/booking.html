@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | StyleSlot</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="booking.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="booking-header">
+        <a href="index.html" class="logo">StyleSlot<span>.</span></a>
+        <a href="browse.html">Back to browsing</a>
+    </header>
+
+    <main class="booking-container">
+
+        <div class="booking-heading">
+            <span class="eyebrow">APPOINTMENTS</span>
+            <h1>Book your appointment</h1>
+            <p>Choose your service and confirm your booking.</p>
+        </div>
+
+        <div id="loadingState" class="booking-state">
+            Loading appointment details...
+        </div>
+
+        <div id="errorState" class="booking-state" hidden>
+            <h2>Unable to load booking</h2>
+            <p id="errorText"></p>
+            <a href="browse.html" class="btn btn-primary">Browse Stylists</a>
+        </div>
+
+        <div id="bookingContent" class="booking-layout" hidden>
+
+            <form id="bookingForm" class="booking-form">
+
+                <section class="booking-card">
+                    <h2>1. Appointment details</h2>
+
+                    <div class="booking-field">
+                        <label for="serviceSelect">Service</label>
+                        <select id="serviceSelect" required></select>
+                    </div>
+
+                    <div class="booking-field">
+                        <label for="dateSelect">Appointment date</label>
+                        <select id="dateSelect" required>
+                            <option value="">Select a date</option>
+                        </select>
+                    </div>
+
+                    <div class="booking-field">
+                        <label for="timeSelect">Available time</label>
+                        <select id="timeSelect" required>
+                            <option value="">Select a time</option>
+                        </select>
+                    </div>
+
+                    <p id="availabilityMessage" class="booking-note"></p>
+
+                    <div class="booking-field">
+                        <label for="notes">Additional notes (optional)</label>
+                        <textarea id="notes" rows="3" maxlength="500"
+                            placeholder="Anything your stylist should know?"></textarea>
+                    </div>
+                </section>
+
+                <section class="booking-card">
+                    <h2>2. Payment method</h2>
+
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod"
+                            value="cash" checked>
+                        <div>
+                            <strong>Pay at the salon</strong>
+                            <p>Pay when you attend your appointment.</p>
+                        </div>
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod"
+                            value="card">
+                        <div>
+                            <strong>Simulated card payment</strong>
+                            <p>Demo payment. No real money will be charged.</p>
+                        </div>
+                    </label>
+                </section>
+
+                <div id="bookingMessage" class="booking-message"
+                    role="status" hidden></div>
+
+                <button id="confirmButton" type="submit"
+                    class="btn btn-primary confirm-button" disabled>
+                    Confirm Booking
+                </button>
+
+            </form>
+
+            <aside class="booking-summary booking-card">
+
+                <h2>Booking summary</h2>
+
+                <div class="summary-stylist">
+                    <div id="stylistInitials" class="summary-avatar"></div>
+                    <div>
+                        <h3 id="stylistName"></h3>
+                        <p id="salonName"></p>
+                        <p id="salonLocation"></p>
+                    </div>
+                </div>
+
+                <div class="summary-row">
+                    <span>Service</span>
+                    <strong id="summaryService">—</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Duration</span>
+                    <strong id="summaryDuration">—</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Date</span>
+                    <strong id="summaryDate">—</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Time</span>
+                    <strong id="summaryTime">—</strong>
+                </div>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <strong id="summaryTotal">—</strong>
+                </div>
+
+                <p class="booking-note">
+                    All prices are in CAD. Your appointment is subject
+                    to availability at the time of confirmation.
+                </p>
+
+            </aside>
+
+        </div>
+
+        <section id="successState" class="booking-state" hidden>
+            <div class="success-icon">✓</div>
+            <h2>Appointment confirmed!</h2>
+            <p>Your booking has been successfully created.</p>
+            <a href="dashboard.html" class="btn btn-primary">
+                View My Appointments
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="booking-footer">
+        &copy; 2026 StyleSlot. All rights reserved.
+    </footer>
+
+    <script src="booking.js"></script>
+</body>
+</html>
