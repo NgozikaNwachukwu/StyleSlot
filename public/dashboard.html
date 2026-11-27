@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account | StyleSlot</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <a href="index.html" class="logo">StyleSlot<span>.</span></a>
+
+        <nav class="dashboard-nav">
+            <a href="index.html">Home</a>
+            <a href="browse.html">Explore Stylists</a>
+            <button id="logoutButton" class="btn btn-outline">
+                Log Out
+            </button>
+        </nav>
+    </header>
+
+    <main class="dashboard-container">
+
+        <div id="loadingState" class="dashboard-state">
+            Loading your account...
+        </div>
+
+        <div id="errorState" class="dashboard-state" hidden>
+            <h2>Unable to load your account</h2>
+            <p id="errorText"></p>
+            <button id="retryButton" class="btn btn-primary">
+                Try Again
+            </button>
+        </div>
+
+        <div id="dashboardContent" hidden>
+
+            <section class="dashboard-welcome">
+                <div>
+                    <span class="eyebrow">MY ACCOUNT</span>
+                    <h1>Welcome, <span id="customerName"></span>!</h1>
+                    <p>View and manage your appointments.</p>
+                </div>
+
+                <a href="browse.html" class="btn btn-primary">
+                    Book an Appointment
+                </a>
+            </section>
+
+            <section class="dashboard-stats">
+
+                <article class="stat-card">
+                    <p>Total appointments</p>
+                    <h2 id="totalCount">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <p>Upcoming</p>
+                    <h2 id="upcomingCount">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <p>Completed</p>
+                    <h2 id="completedCount">0</h2>
+                </article>
+
+                <article class="stat-card">
+                    <p>Cancelled</p>
+                    <h2 id="cancelledCount">0</h2>
+                </article>
+
+            </section>
+
+            <section class="weather-card">
+                <div>
+                    <span class="eyebrow">PLAN YOUR VISIT</span>
+                    <h2>Weather in Oshawa</h2>
+                    <p id="weatherDescription">
+                        Check the local weather before heading out.
+                    </p>
+                    <small id="weatherUpdated"></small>
+                </div>
+
+                <div class="weather-right">
+                    <h2 id="weatherTemperature">—</h2>
+                    <button id="weatherButton" class="btn btn-outline">
+                        Check Weather
+                    </button>
+                </div>
+            </section>
+
+            <section class="appointments-section">
+
+                <div class="section-heading">
+                    <h2>My appointments</h2>
+
+                    <select id="statusFilter" aria-label="Filter appointments">
+                        <option value="all">All appointments</option>
+                        <option value="upcoming">Upcoming</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+
+                <div id="dashboardMessage"
+                    class="dashboard-message" role="status" hidden>
+                </div>
+
+                <div id="appointmentsList"></div>
+
+                <div id="emptyState" class="dashboard-state" hidden>
+                    <h2>No appointments found</h2>
+                    <p>Your appointments will appear here.</p>
+                    <a href="browse.html" class="btn btn-primary">
+                        Explore Stylists
+                    </a>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Reschedule appointment -->
+    <dialog id="rescheduleModal" class="dashboard-modal">
+
+        <div class="modal-heading">
+            <h2>Reschedule appointment</h2>
+            <button type="button" class="close-modal"
+                aria-label="Close">×</button>
+        </div>
+
+        <form id="rescheduleForm">
+
+            <div class="dashboard-field">
+                <label for="newDate">New appointment date</label>
+                <select id="newDate" required></select>
+            </div>
+
+            <div class="dashboard-field">
+                <label for="newTime">Available time</label>
+                <select id="newTime" required></select>
+            </div>
+
+            <p id="rescheduleMessage" class="modal-message"></p>
+
+            <button type="submit" id="rescheduleButton"
+                class="btn btn-primary modal-submit" disabled>
+                Confirm Reschedule
+            </button>
+
+        </form>
+
+    </dialog>
+
+    <!-- Leave a review -->
+    <dialog id="reviewModal" class="dashboard-modal">
+
+        <div class="modal-heading">
+            <h2>Leave a review</h2>
+            <button type="button" class="close-modal"
+                aria-label="Close">×</button>
+        </div>
+
+        <form id="reviewForm">
+
+            <div class="dashboard-field">
+                <label for="rating">Rating</label>
+
+                <select id="rating" required>
+                    <option value="">Select a rating</option>
+                    <option value="5">★★★★★ — Excellent</option>
+                    <option value="4">★★★★ — Good</option>
+                    <option value="3">★★★ — Average</option>
+                    <option value="2">★★ — Fair</option>
+                    <option value="1">★ — Poor</option>
+                </select>
+            </div>
+
+            <div class="dashboard-field">
+                <label for="reviewComment">Your review</label>
+                <textarea id="reviewComment" rows="5"
+                    maxlength="500"
+                    placeholder="Tell us about your appointment..."
+                    required></textarea>
+            </div>
+
+            <p id="reviewMessage" class="modal-message"></p>
+
+            <button type="submit" class="btn btn-primary modal-submit">
+                Submit Review
+            </button>
+
+        </form>
+
+    </dialog>
+
+    <footer class="dashboard-footer">
+        &copy; 2026 StyleSlot. All rights reserved.
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
