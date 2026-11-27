@@ -68,7 +68,8 @@ app.use('/api/services', require('./routes/services'));
 app.use('/api/stylists', require('./routes/stylists'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/appointments', require('./routes/appointments'));
-
+app.use('/api/reviews', require('./routes/reviews'));
+app.use('/api/weather', require('./routes/weather'));
 // Administrator access test
 const { requireAuth, requireAdmin } = require('./middleware/auth');
 

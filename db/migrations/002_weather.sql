@@ -1,0 +1,9 @@
+USE styleslot;
+
+CREATE TABLE IF NOT EXISTS WEATHER (
+    Weather_id INT AUTO_INCREMENT PRIMARY KEY,
+    City VARCHAR(100) NOT NULL,
+    Temperature DECIMAL(5,2) NOT NULL,
+    Description VARCHAR(100) NOT NULL,
+    Fetched_at DATETIME NOT NULL
+);
