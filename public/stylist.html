@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylist Profile | StyleSlot</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylist.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <a href="index.html" class="logo">StyleSlot<span>.</span></a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="browse.html" class="active">Explore Stylists</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#about">About Us</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-outline">Log In</a>
+            <a href="register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+    </header>
+
+    <main class="profile-page">
+
+        <!-- Back Navigation -->
+        <div class="profile-back">
+            <a href="browse.html" class="back-link">
+                &larr; Back to stylists
+            </a>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading-state" class="profile-status" role="status">
+
+            <div class="loading-spinner"></div>
+            <p>Loading stylist profile...</p>
+
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="profile-status" hidden>
+
+            <h2>Unable to load profile</h2>
+
+            <p id="error-message">
+                Please try again.
+            </p>
+
+            <div class="status-actions">
+                <button type="button" id="retry-button"
+                        class="btn btn-primary">
+                    Try Again
+                </button>
+
+                <a href="browse.html" class="btn btn-outline">
+                    Browse Stylists
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Profile Content -->
+        <div id="profile-content" hidden>
+
+            <!-- Stylist Overview -->
+            <section class="profile-overview">
+
+                <div class="profile-image" id="profile-image">
+                    <!-- Profile image or initials -->
+                </div>
+
+                <div class="profile-details">
+
+                    <h1 id="stylist-name"></h1>
+
+                    <div class="profile-location">
+
+                        <svg width="18" height="18"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="1.7"
+                             aria-hidden="true">
+                            <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+
+                        <span id="salon-name"></span>
+                        <span id="salon-location"></span>
+
+                    </div>
+
+                    <div class="profile-rating" id="profile-rating">
+
+                        <span class="rating-star" aria-hidden="true">★</span>
+
+                        <span id="rating-value"></span>
+                        <span id="review-count"></span>
+
+                    </div>
+
+                    <p class="profile-bio" id="stylist-bio" hidden></p>
+
+                    <div class="profile-specialties"
+                         id="profile-specialties">
+                        <!-- Service tags -->
+                    </div>
+
+                    <div class="profile-actions">
+
+                        <a href="#services" class="btn btn-primary">
+                            Book an Appointment &rarr;
+                        </a>
+
+                        <a href="#reviews" class="btn btn-outline">
+                            Read Reviews
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Profile Section Navigation -->
+            <nav class="profile-tabs" aria-label="Profile sections">
+
+                <a href="#services" class="profile-tab active">
+                    Services
+                </a>
+
+                <a href="#availability" class="profile-tab">
+                    Availability
+                </a>
+
+                <a href="#reviews" class="profile-tab">
+                    Reviews
+                </a>
+
+            </nav>
+
+            <!-- Services -->
+            <section class="profile-section reveal" id="services">
+
+                <div class="profile-section-heading">
+
+                    <h2>Services and prices</h2>
+
+                    <p>Select a service to book an appointment.</p>
+
+                </div>
+
+                <div class="service-list" id="service-list">
+
+                    <!-- Services generated from the database -->
+
+                </div>
+
+                <p class="section-message"
+                   id="services-empty" hidden>
+                    No services are currently listed.
+                </p>
+
+            </section>
+
+            <!-- Availability -->
+            <section class="profile-section reveal" id="availability">
+
+                <div class="profile-section-heading">
+
+                    <h2>Availability</h2>
+
+                    <p>View upcoming appointment times.</p>
+
+                </div>
+
+                <div class="availability-panel">
+
+                    <div class="availability-header">
+
+                        <div>
+                            <h3>Select a service</h3>
+
+                            <p>
+                                Available times may depend on service duration.
+                            </p>
+                        </div>
+
+                        <select id="availability-service"
+                                aria-label="Select a service"
+                                disabled>
+
+                            <option value="">Choose a service</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="availability-grid"
+                         id="availability-grid">
+
+                        <!-- Available dates and times -->
+
+                    </div>
+
+                    <p class="section-message"
+                       id="availability-message"
+                       aria-live="polite">
+                        Choose a service to view available times.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- Customer Reviews -->
+            <section class="profile-section reveal" id="reviews">
+
+                <div class="profile-section-heading">
+
+                    <h2>Customer reviews</h2>
+
+                </div>
+
+                <div class="reviews-summary" id="reviews-summary" hidden>
+
+                    <div class="review-score">
+
+                        <span id="overall-rating"></span>
+
+                        <div class="review-stars"
+                             id="overall-stars"></div>
+
+                        <p id="total-reviews"></p>
+
+                    </div>
+
+                    <div class="rating-breakdown"
+                         id="rating-breakdown">
+
+                        <!-- Rating distribution, if available -->
+
+                    </div>
+
+                </div>
+
+                <div class="reviews-list" id="reviews-list">
+
+                    <!-- Customer reviews from the database -->
+
+                </div>
+
+                <p class="section-message"
+                   id="reviews-empty" hidden>
+                    No reviews yet.
+                </p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+                <a href="index.html" class="logo">StyleSlot<span>.</span></a>
+                <p>Find and book local hairstylists.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="browse.html">Find a Stylist</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#about">About Us</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>Your Account</h4>
+                <a href="login.html">Log In</a>
+                <a href="register.html">Sign Up</a>
+                <a href="dashboard.html">Dashboard</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 StyleSlot. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+    <script src="stylist.js"></script>
+
+</body>
+</html>

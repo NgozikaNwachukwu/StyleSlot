@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Stylists | StyleSlot</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="browse.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <a href="index.html" class="logo">StyleSlot<span>.</span></a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="browse.html" class="active">Explore Stylists</a>
+            <a href="index.html#services">Services</a>
+            <a href="index.html#about">About Us</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-outline">Log In</a>
+            <a href="register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Search Section -->
+        <section class="browse-hero">
+
+            <h1>Find a hairstylist</h1>
+
+            <p>
+                Browse stylists, compare prices and check availability.
+            </p>
+
+            <form class="search-bar" id="search-form">
+
+                <div class="search-field">
+
+                    <svg width="22" height="22" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="1.7"
+                         aria-hidden="true">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="m16 16 5 5"></path>
+                    </svg>
+
+                    <input
+                        type="search"
+                        id="search-input"
+                        placeholder="Search stylists, salons or services"
+                        aria-label="Search stylists, salons or services"
+                    >
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Search
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- Browse Content -->
+        <section class="browse-content section-padding">
+
+            <!-- Service Filters -->
+            <div class="filter-section">
+
+                <h2>Filter by service</h2>
+
+                <div class="service-filters" id="service-filters">
+
+                    <button type="button" class="filter-chip active"
+                            data-service="all" aria-pressed="true">
+                        All Services
+                    </button>
+
+                    <button type="button" class="filter-chip"
+                            data-service="braids" aria-pressed="false">
+                        Braids
+                    </button>
+
+                    <button type="button" class="filter-chip"
+                            data-service="locs" aria-pressed="false">
+                        Locs
+                    </button>
+
+                    <button type="button" class="filter-chip"
+                            data-service="twists" aria-pressed="false">
+                        Twists
+                    </button>
+
+                    <button type="button" class="filter-chip"
+                            data-service="wig" aria-pressed="false">
+                        Wig Installs
+                    </button>
+
+                    <button type="button" class="filter-chip"
+                            data-service="natural" aria-pressed="false">
+                        Natural Hair
+                    </button>
+
+                    <button type="button" class="filter-chip"
+                            data-service="silk" aria-pressed="false">
+                        Silk Press
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- Results and Sorting -->
+            <div class="results-toolbar">
+
+                <div class="results-heading">
+
+                    <h2>Stylists</h2>
+
+                    <p id="results-count" aria-live="polite">
+                        Loading stylists...
+                    </p>
+
+                </div>
+
+                <div class="sort-control">
+
+                    <label for="sort-select">Sort by:</label>
+
+                    <select id="sort-select">
+                        <option value="recommended">Recommended</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading-state" class="status-container" role="status">
+
+                <div class="loading-spinner"></div>
+
+                <p>Loading stylists...</p>
+
+            </div>
+
+            <!-- Stylist Cards -->
+            <div class="stylist-grid" id="stylist-grid">
+
+                <!-- Cards are generated using data from the backend. -->
+
+            </div>
+
+            <!-- Empty Results -->
+            <div id="empty-state" class="status-container" hidden>
+
+                <h3>No stylists found</h3>
+
+                <p>Try another search or select a different service.</p>
+
+                <button type="button" id="clear-filters"
+                        class="btn btn-outline">
+                    Clear Filters
+                </button>
+
+            </div>
+
+            <!-- Error State -->
+            <div id="error-state" class="status-container" hidden>
+
+                <h3>Unable to load stylists</h3>
+
+                <p>Please try again.</p>
+
+                <button type="button" id="retry-button"
+                        class="btn btn-primary">
+                    Try Again
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div class="footer-brand">
+                <a href="index.html" class="logo">StyleSlot<span>.</span></a>
+                <p>Find and book local hairstylists.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="browse.html">Find a Stylist</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#about">About Us</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>Your Account</h4>
+                <a href="login.html">Log In</a>
+                <a href="register.html">Sign Up</a>
+                <a href="dashboard.html">Dashboard</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 StyleSlot. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+    <script src="browse.js"></script>
+
+</body>
+</html>
