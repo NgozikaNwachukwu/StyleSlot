@@ -70,6 +70,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/appointments', require('./routes/appointments'));
 app.use('/api/reviews', require('./routes/reviews'));
 app.use('/api/weather', require('./routes/weather'));
+app.use('/api/admin', require('./routes/admin'));
 // Administrator access test
 const { requireAuth, requireAdmin } = require('./middleware/auth');
 
