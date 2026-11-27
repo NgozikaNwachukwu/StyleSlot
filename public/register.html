@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | StyleSlot</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="auth-header">
+        <a href="index.html" class="logo">StyleSlot<span>.</span></a>
+        <a href="browse.html" class="auth-back">Back to browsing</a>
+    </header>
+
+    <main class="auth-layout">
+
+        <div class="auth-image register-image">
+            <div class="auth-image-content">
+                <h2>Find a style that suits you.</h2>
+                <p>Explore services, discover hairstylists and book your next appointment.</p>
+            </div>
+        </div>
+
+        <section class="auth-panel">
+            <div class="auth-card">
+
+                <span class="eyebrow">JOIN STYLESLOT</span>
+                <h1>Create an account</h1>
+                <p class="auth-description">
+                    Enter your details to get started.
+                </p>
+
+                <form id="registerForm">
+
+                    <div class="form-group">
+                        <label for="fullName">Full name</label>
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="full_name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            autocomplete="tel"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+
+                        <div class="password-wrapper">
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                minlength="8"
+                                required
+                            >
+                            <button type="button" class="password-toggle">
+                                Show
+                            </button>
+                        </div>
+
+                        <small>Use at least 8 characters.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm password</label>
+
+                        <div class="password-wrapper">
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm your password"
+                                autocomplete="new-password"
+                                minlength="8"
+                                required
+                            >
+                            <button type="button" class="password-toggle">
+                                Show
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="formMessage" class="form-message" hidden></div>
+
+                    <button type="submit" class="btn btn-primary auth-submit">
+                        Create Account
+                    </button>
+
+                </form>
+
+                <p class="auth-switch">
+                    Already have an account?
+                    <a href="login.html">Log in</a>
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="auth-footer">
+        <p>&copy; 2026 StyleSlot. All rights reserved.</p>
+    </footer>
+
+    <script src="auth.js"></script>
+</body>
+</html>
