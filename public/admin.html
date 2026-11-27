@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | StyleSlot</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+    <script src="admin.js" defer></script>
+</head>
+<body>
+
+    <header class="admin-header">
+        <a href="index.html" class="logo">StyleSlot<span>.</span></a>
+
+        <div class="admin-header-actions">
+            <span>Administrator</span>
+            <button id="logoutButton" class="btn btn-outline">
+                Log Out
+            </button>
+        </div>
+    </header>
+
+    <main class="admin-container">
+
+        <div id="loadingState" class="admin-state">
+            Loading dashboard...
+        </div>
+
+        <div id="errorState" class="admin-state" hidden>
+            <h2>Unable to load dashboard</h2>
+            <p id="errorText"></p>
+            <button id="retryButton" class="btn btn-primary">
+                Try Again
+            </button>
+        </div>
+
+        <div id="adminContent" hidden>
+
+            <section class="admin-welcome">
+                <span class="eyebrow">ADMINISTRATION</span>
+                <h1>Admin Dashboard</h1>
+                <p>Manage services and explore StyleSlot's database reports.</p>
+            </section>
+
+            <nav class="admin-tabs" aria-label="Dashboard sections">
+                <button class="admin-tab active" data-panel="overview">
+                    Overview
+                </button>
+                <button class="admin-tab" data-panel="analytics">
+                    Analytics
+                </button>
+                <button class="admin-tab" data-panel="reports">
+                    Database Reports
+                </button>
+                <button class="admin-tab" data-panel="services">
+                    Manage Services
+                </button>
+            </nav>
+
+            <div id="adminMessage" class="admin-message" role="status" hidden></div>
+
+            <!-- Overview -->
+            <section id="overview" class="admin-panel">
+
+                <h2>Business overview</h2>
+
+                <div class="admin-stats">
+
+                    <article class="admin-stat">
+                        <p>Total appointments</p>
+                        <h3 id="appointmentCount">—</h3>
+                    </article>
+
+                    <article class="admin-stat">
+                        <p>Total customers</p>
+                        <h3 id="customerCount">—</h3>
+                    </article>
+
+                    <article class="admin-stat">
+                        <p>Total stylists</p>
+                        <h3 id="stylistCount">—</h3>
+                    </article>
+
+                    <article class="admin-stat">
+                        <p>Total revenue</p>
+                        <h3 id="totalRevenue">—</h3>
+                    </article>
+
+                </div>
+
+                <div class="admin-quick-grid">
+
+                    <article class="admin-card">
+                        <h3>Business analytics</h3>
+                        <p>Explore revenue, popular services and appointment trends.</p>
+                        <button class="btn btn-primary" data-open="analytics">
+                            View Analytics
+                        </button>
+                    </article>
+
+                    <article class="admin-card">
+                        <h3>Database reports</h3>
+                        <p>Explore the ten SQL views and export their results.</p>
+                        <button class="btn btn-primary" data-open="reports">
+                            View Reports
+                        </button>
+                    </article>
+
+                    <article class="admin-card">
+                        <h3>Service management</h3>
+                        <p>Add, edit or remove services from the database.</p>
+                        <button class="btn btn-primary" data-open="services">
+                            Manage Services
+                        </button>
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- Analytics -->
+            <section id="analytics" class="admin-panel" hidden>
+
+                <div class="admin-section-heading">
+                    <div>
+                        <h2>Business analytics</h2>
+                        <p>Visualizations generated from database views.</p>
+                    </div>
+                    <button id="refreshCharts" class="btn btn-outline">
+                        Refresh
+                    </button>
+                </div>
+
+                <div id="chartMessage" class="section-message" role="status"></div>
+
+                <div class="chart-grid">
+
+                    <article class="admin-card chart-card">
+                        <h3>Revenue by stylist</h3>
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </article>
+
+                    <article class="admin-card chart-card">
+                        <h3>Service popularity</h3>
+                        <div class="chart-container">
+                            <canvas id="popularityChart"></canvas>
+                        </div>
+                    </article>
+
+                    <article class="admin-card chart-card">
+                        <h3>Busiest appointment days</h3>
+                        <div class="chart-container">
+                            <canvas id="daysChart"></canvas>
+                        </div>
+                    </article>
+
+                </div>
+
+            </section>
+
+            <!-- Database Reports -->
+            <section id="reports" class="admin-panel" hidden>
+
+                <div class="admin-section-heading">
+                    <div>
+                        <h2>Database reports</h2>
+                        <p>Results from the ten Phase II SQL views.</p>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+
+                    <div class="report-controls">
+
+                        <div class="admin-field">
+                            <label for="viewSelect">Select a database view</label>
+
+                            <select id="viewSelect">
+                                <option value="vw_appointment_details">
+                                    View 1 — Appointment Details
+                                </option>
+                                <option value="vw_top_rated_stylists">
+                                    View 2 — Top Rated Stylists
+                                </option>
+                                <option value="vw_value_picks">
+                                    View 3 — Value Picks
+                                </option>
+                                <option value="vw_salon_stylist_directory">
+                                    View 4 — Salon and Stylist Directory
+                                </option>
+                                <option value="vw_clients_to_rebook">
+                                    View 5 — Clients to Rebook
+                                </option>
+                                <option value="vw_stylist_revenue">
+                                    View 6 — Stylist Revenue
+                                </option>
+                                <option value="vw_open_availability">
+                                    View 7 — Open Availability
+                                </option>
+                                <option value="vw_busiest_days">
+                                    View 8 — Busiest Days
+                                </option>
+                                <option value="vw_service_popularity">
+                                    View 9 — Service Popularity
+                                </option>
+                                <option value="vw_upcoming_prep_checklist">
+                                    View 10 — Upcoming Prep Checklist
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="admin-field">
+                            <label for="reportSearch">Search records</label>
+                            <input type="search" id="reportSearch"
+                                placeholder="Enter a keyword">
+                        </div>
+
+                        <button id="loadReport" class="btn btn-primary">
+                            Run Report
+                        </button>
+
+                    </div>
+
+                    <div class="report-toolbar">
+                        <span id="reportCount">Select a report to begin.</span>
+
+                        <div class="export-actions">
+                            <button id="exportCsv" class="btn btn-outline" disabled>
+                                Export CSV
+                            </button>
+
+                            <button id="exportPdf" class="btn btn-outline" disabled>
+                                Export PDF
+                            </button>
+                        </div>
+                    </div>
+
+                    <p id="reportMessage" class="section-message" role="status"></p>
+
+                    <div class="table-wrapper">
+                        <table id="reportTable">
+                            <thead></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Service Management -->
+            <section id="services" class="admin-panel" hidden>
+
+                <div class="admin-section-heading">
+                    <div>
+                        <h2>Manage services</h2>
+                        <p>Create, update and delete service records.</p>
+                    </div>
+
+                    <button id="addService" class="btn btn-primary">
+                        + Add Service
+                    </button>
+                </div>
+
+                <div class="admin-card">
+
+                    <p id="serviceMessage" class="section-message" role="status"></p>
+
+                    <div class="table-wrapper">
+                        <table id="servicesTable">
+                            <thead></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Add/Edit Service -->
+    <dialog id="serviceModal" class="admin-modal">
+
+        <div class="admin-section-heading">
+            <h2 id="modalTitle">Add Service</h2>
+            <button id="closeModal" class="close-modal"
+                aria-label="Close">×</button>
+        </div>
+
+        <form id="serviceForm">
+
+            <div id="serviceFields"></div>
+
+            <p id="formMessage" class="section-message" role="status"></p>
+
+            <button id="saveService" type="submit"
+                class="btn btn-primary full-width">
+                Save Service
+            </button>
+
+        </form>
+
+    </dialog>
+
+    <footer class="admin-footer">
+        &copy; 2026 StyleSlot. All rights reserved.
+    </footer>
+
+</body>
+</html>
