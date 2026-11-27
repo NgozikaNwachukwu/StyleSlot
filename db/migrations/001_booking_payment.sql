@@ -1,0 +1,10 @@
+USE styleslot;
+
+ALTER TABLE PAYMENT
+ADD COLUMN Payment_method VARCHAR(10) NULL,
+ADD CONSTRAINT chk_payment_method
+CHECK (Payment_method IN ('cash', 'card')),
+MODIFY COLUMN Paid_at DATETIME NULL;
+
+ALTER TABLE APPOINTMENT
+MODIFY COLUMN Client_notes VARCHAR(500) NULL;

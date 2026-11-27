@@ -64,10 +64,11 @@ app.get('/api/health', async (req, res) => {
 });
 
 // API routes
-// API routes
 app.use('/api/services', require('./routes/services'));
 app.use('/api/stylists', require('./routes/stylists'));
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/appointments', require('./routes/appointments'));
+
 // Administrator access test
 const { requireAuth, requireAdmin } = require('./middleware/auth');
 
