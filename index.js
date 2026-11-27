@@ -43,8 +43,11 @@ app.get('/api/health', async (req, res) => {
         });
     }
 });
-// Service API routes
+
+// API routes
 app.use('/api/services', require('./routes/services'));
+app.use('/api/stylists', require('./routes/stylists'));
+
 // Start server
 app.listen(PORT, () => {
     console.log(`StyleSlot server running on port ${PORT}`);
